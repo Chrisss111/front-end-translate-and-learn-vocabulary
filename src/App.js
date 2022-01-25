@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import TextInput from './components/TextInput ';
+import Title from './components/Title ';
 
 function App() {
   return (
@@ -7,7 +9,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code>  and save to reload.
+          <Title></Title>
+          <TextInput></TextInput>
         </p>
         <a
           className="App-link"
