@@ -1,26 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import TextInput from './components/TextInput ';
-import Title from './components/Title ';
+import TextInput from './components/TextInput';
+import Title from './components/Title';
+import VocabListsListing from './components/VocabListsListing';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        Translate and Build Vocabulary
         <p>
           <Title></Title>
-          <TextInput></TextInput>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <TextInput></TextInput>
       </header>
+      <VocabListsListing></VocabListsListing>
     </div>
   );
 }

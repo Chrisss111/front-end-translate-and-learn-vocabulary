@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextInput = () => {
+const TextInput = (props) => {
     return <div>
       <h1>Please Input Your Text</h1>
       <form>

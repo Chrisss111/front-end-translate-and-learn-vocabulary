@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Title = () => {
-    return <h2>Title</h2>;
+const Title = (props) => {
+    return <h2>Page Title</h2>;
   };
 
+
+  Title.propTypes = {
+    title: PropTypes.string
+}
 
 export default Title;
