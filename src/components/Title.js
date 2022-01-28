@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Title = (props) => {
-    return <h2>Page Title</h2>;
+    return <h2>{props.text}</h2>;
   };
 
 

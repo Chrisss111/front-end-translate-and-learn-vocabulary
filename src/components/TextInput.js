@@ -5,7 +5,7 @@ const TextInput = (props) => {
       <h1>Please Input Your Text</h1>
       <form>
         <label>
-          Text: <input type="text" />
+          Text: <input type="text" className='input-box'/>
         </label>
       </form>
     </div>

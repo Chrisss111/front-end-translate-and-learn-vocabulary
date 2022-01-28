@@ -6,12 +6,13 @@ const VocabListsListing = (props) => {
   {/* Name of vocab list-think have to use hook/state to make them appear based on what backend API request says */}
   <div>
     <p>{props.vocabListName}</p>
-  <Button title='Select'>{props.title}</Button>
+    <button>Select</button>
+  {/* <Button title='Select'>{props.title}</Button> */}
   </div>
   </div>;
 };
 VocabListsListing.defaultProps  = {
-    vocabListName: 'test'
+    vocabListName: 'Test Vocab List'
 };
 export default VocabListsListing;
 

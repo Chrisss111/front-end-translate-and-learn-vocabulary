@@ -1,7 +1,13 @@
 import React from 'react';
 
 const Button = (props) => {
-  return <button>{props.title}</button>;
+
+  const buttonClick = () => {
+    props.changePageButtonClick();
+    console.log('test from button component')
+  };
+
+  return <button onClick={buttonClick}>{props.name}</button>;
 };
 
 export default Button;
