@@ -1,11 +1,18 @@
 import React from 'react';
-import Words from './Words';
-import Text from './Text';
+// import Words from './Words';
+// import Text from './Text';
 
 // text component + series of word components
 
 const DisplayedVocabList = (props) => {
-  return <div></div>;
+  
+  const goBackToListingsButton = () => {
+    props.goBackToListingsClick(props.id);
+  };
+  return <div>
+    <button onClick={goBackToListingsButton}>Saved Vocab Lists</button>
+    <p>VOCAB LIST TO BE DISPLAYED BELOW</p>
+  </div>;
 };
 
 export default DisplayedVocabList;
