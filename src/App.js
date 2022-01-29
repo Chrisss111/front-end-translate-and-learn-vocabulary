@@ -1,11 +1,13 @@
 import './App.css';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState, useEffect } from 'react';
 import TextInput from './components/TextInput';
 import Title from './components/Title';
 import VocabListsListing from './components/VocabListsListing';
 import DisplayedVocabList from './components/DisplayedVocabList';
 import Words from './components/Words';
 import Button from './components/Button';
+
 
 // trying to figure out Google Trnalsate API:
 // const {Translate} = require('@google-cloud/translate').v2;
@@ -34,6 +36,7 @@ const APP_MODES = {
 function App() {
 
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
+  const [selectedListID, setSelectedListID] = useState(null);
 
   let content = ''
   let modeTitle = ''
@@ -54,8 +57,9 @@ function App() {
     setAppMode(APP_MODES.vocabListsListing)
   }
 
-  const selectButtonClick = (props) => {
+  const selectButtonClick = (id) => {
     setAppMode(APP_MODES.displayedVocabList)
+    setSelectedListID(id)
   };
 
   if (appMode === APP_MODES.landingPage) {
@@ -66,8 +70,9 @@ function App() {
     nameChangePageButton = 'Saved Vocab Lists' 
 
   } else if (appMode === APP_MODES.displayedVocabList) {
-    content = (<div><DisplayedVocabList goBackToListingsClick={goBackToListingsClick}></DisplayedVocabList></div>)
-    modeTitle = 'title of this specific vocab list' //this title pulled out of where keeping vocab list info
+    content = (<div><DisplayedVocabList goBackToListingsClick={goBackToListingsClick}
+    selectedListID={selectedListID}></DisplayedVocabList></div>)
+    // modeTitle = 'title of this specific vocab list' //this title pulled out of where keeping vocab list info
     nameChangePageButton = 'Homepage' 
 
     // displayed list component
