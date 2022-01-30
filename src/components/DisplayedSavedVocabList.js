@@ -6,7 +6,7 @@ import axios from "axios";
 
 // text component + series of word components
 
-const DisplayedVocabList = (props) => {
+const DisplayedSavedVocabList = (props) => {
   
   const [vocabList, setVocabList] = useState(null);
 
@@ -48,4 +48,4 @@ const DisplayedVocabList = (props) => {
     }
   };
 
-  export default DisplayedVocabList;
+  export default DisplayedSavedVocabList;

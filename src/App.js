@@ -4,14 +4,18 @@ import React, { useState, useEffect } from 'react';
 import TextInput from './components/TextInput';
 import Title from './components/Title';
 import VocabListsListing from './components/VocabListsListing';
-import DisplayedVocabList from './components/DisplayedVocabList';
+import DisplayedSavedVocabList from './components/DisplayedSavedVocabList';
+import TranslatedPage from './components/TranslatedPage';
 import Words from './components/Words';
 import Button from './components/Button';
 
 
 // trying to figure out Google Trnalsate API:
+// const apiKey = process.env.REACT_APP_GOOGLE_TRANSLATE_API_KEY;
+// const projectId = 'zippy-brand-338723'
+
 // const {Translate} = require('@google-cloud/translate').v2;
-// const translate = new Translate({zippy-brand-338723});
+// const translate = new Translate({projectId});
 
 // const text = 'Hello';
 // const target = 'fr';
@@ -28,7 +32,8 @@ import Button from './components/Button';
 
 const APP_MODES = {
   landingPage: "landingPage",
-  displayedVocabList: "displayedVocabList",
+  translatedPage: "translatedPage",
+  displayedSavedVocabList: "displayedSavedVocabList",
   vocabListsListing: "vocabListsListing"
 };
 
@@ -37,6 +42,7 @@ function App() {
 
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
   const [selectedListID, setSelectedListID] = useState(null);
+  const [selectedLang, setSelectedLang] = useState('');
 
   let content = ''
   let modeTitle = ''
@@ -58,20 +64,24 @@ function App() {
   }
 
   const selectButtonClick = (id) => {
-    setAppMode(APP_MODES.displayedVocabList)
+    setAppMode(APP_MODES.displayedSavedVocabList)
     setSelectedListID(id)
   };
 
+  const enterButterClick = (props) =>{
+    setAppMode(APP_MODES.translatedPage)
+    
+  };
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput></TextInput>
+    <TextInput enterButterClick={enterButterClick}></TextInput>
     </div>);
     modeTitle = 'Landing Page'
     nameChangePageButton = 'Saved Vocab Lists' 
 
-  } else if (appMode === APP_MODES.displayedVocabList) {
-    content = (<div><DisplayedVocabList goBackToListingsClick={goBackToListingsClick}
-    selectedListID={selectedListID}></DisplayedVocabList></div>)
+  } else if (appMode === APP_MODES.displayedSavedVocabList) {
+    content = (<div><DisplayedSavedVocabList goBackToListingsClick={goBackToListingsClick}
+    selectedListID={selectedListID}></DisplayedSavedVocabList></div>)
     // modeTitle = 'title of this specific vocab list' //this title pulled out of where keeping vocab list info
     nameChangePageButton = 'Homepage' 
 
@@ -80,6 +90,13 @@ function App() {
     content = (<div><VocabListsListing selectButtonClick={selectButtonClick}></VocabListsListing></div>)
     modeTitle = 'Vocab Lists'
     nameChangePageButton = 'Homepage' 
+
+  } else if (appMode === APP_MODES.translatedPage) {
+    // ADD BUTTON TO SAVED VOCAB LISTS-LOOK AT WHAT DID FOR DISPLAYEDSAVEDLIST SECOND BUTTON (one to go to go back to saved listings)
+    content = (<div><TranslatedPage></TranslatedPage></div>)
+    modeTitle = 'Your Translated Words'
+    nameChangePageButton = 'Homepage' 
+    
   } else {
     throw "error";
     // error
