@@ -9,6 +9,7 @@ import axios from "axios";
 const DisplayedSavedVocabList = (props) => {
   
   const [vocabList, setVocabList] = useState(null);
+  const [deleteList, setDeleteList] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/vocablists/${props.selectedListID}/words`)
@@ -17,9 +18,31 @@ const DisplayedSavedVocabList = (props) => {
          });
   }, []);
 
+  // putting useeffect inside an if statement also gets an error message
+  // if (deleteList === true){
+    
+  // }
+
   const goBackToListingsButton = () => {
     props.goBackToListingsClick(props.id);
   };
+
+  const deleteListButton = () => {
+    props.deleteListButtonClick()
+    // get eror message-can't use sueffect in function? has to be in component?
+    // useEffect(() => {
+    //   axios.delete(`http://localhost:5000/vocablists/${props.selectedListID}/words`)
+    //       .then(response => {
+    //         return response.data
+    //       });
+    // }, []);
+    setDeleteList(true)
+    console.log(deleteList)
+
+  };
+
+  
+    
 
   
   if (vocabList != null){
@@ -42,6 +65,7 @@ const DisplayedSavedVocabList = (props) => {
       <div><p>{vocabList.vocablist.text}</p></div>
       <div><ul>{wordListItems}</ul>
       </div>
+      <section><button onClick={deleteListButton}>Delete This Vocab List</button></section>
     </div>;
   } else {
     return <p>please wait as we gather you saved lists</p>

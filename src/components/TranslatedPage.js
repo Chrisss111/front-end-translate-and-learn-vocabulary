@@ -30,9 +30,16 @@ const TranslatedPage = (props) => {
   
 
     const wordListItems = vocabList.map((item) => {
-
+    
      
       return <li>{item.input}: {item.translatedText} <div>google translate link: {`https://translate.google.com/?sl=${textt.original_lang}&tl=en&text=${item.input}&op=translate`}</div> 
+
+      {/* Tried this method to make into hyperlink but said String.link("url") is a deprecated method (can only seem to find react native instructions for hyperlink):  
+      
+      const string = 'see this word in Google Translate: '
+     
+      return <li>{item.input}: {item.translatedText} <div>{string.link({`https://translate.google.com/?sl=${textt.original_lang}&tl=en&text=${item.input}&op=translate`)}</div>  */}
+
       <div>
           <form>
           <label>

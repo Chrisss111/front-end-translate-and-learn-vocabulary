@@ -6,6 +6,7 @@ import Title from './components/Title';
 import VocabListsListing from './components/VocabListsListing';
 import DisplayedSavedVocabList from './components/DisplayedSavedVocabList';
 import TranslatedPage from './components/TranslatedPage';
+import LanguageDropdown from './components/LanguageDropdown';
 import Words from './components/Words';
 import Button from './components/Button';
 
@@ -43,6 +44,7 @@ function App() {
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
   const [selectedListID, setSelectedListID] = useState(null);
   const [selectedLang, setSelectedLang] = useState('');
+  const [dropdownLanguage, setDropDownLanguage] = useState("Lang of Your Text");
 
   let content = ''
   let modeTitle = ''
@@ -68,20 +70,31 @@ function App() {
     setSelectedListID(id)
   };
 
-  const enterButterClick = (props) =>{
+  const languageDropdownMenuChange = (id) => {
+    setDropDownLanguage(id)
+  }
+
+  const enterButtonClick = (props) =>{
     setAppMode(APP_MODES.translatedPage)
+    
+  };
+
+  const deleteListButtonClick = (props) =>{
+    console.log("FROM APP")
+    setAppMode(APP_MODES.vocabListsListing)
     
   };
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput enterButterClick={enterButterClick}></TextInput>
+    <TextInput enterButtonClick={enterButtonClick} languageDropdownMenuChange={languageDropdownMenuChange}>
+    </TextInput>
     </div>);
     modeTitle = 'Landing Page'
     nameChangePageButton = 'Saved Vocab Lists' 
 
   } else if (appMode === APP_MODES.displayedSavedVocabList) {
     content = (<div><DisplayedSavedVocabList goBackToListingsClick={goBackToListingsClick}
-    selectedListID={selectedListID}></DisplayedSavedVocabList></div>)
+    selectedListID={selectedListID} deleteListButtonClick={deleteListButtonClick}></DisplayedSavedVocabList></div>)
     // modeTitle = 'title of this specific vocab list' //this title pulled out of where keeping vocab list info
     nameChangePageButton = 'Homepage' 
 
