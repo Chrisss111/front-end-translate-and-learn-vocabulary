@@ -7,11 +7,19 @@ const TextInput = (props) => {
   const enterButton = () => {
     props.enterButterClick()
   };
+
+  const [value, setValue] = useState('');
+
+  const onChange = (event) => {
+    setValue(event.target.value);
+    console.log(value)
+  };
+
     return <div>
       <h1>Please Input Your Text</h1>
       <form>
-        <label>
-          Text: <input type="text" className='input-box'/>
+        <label> 
+          Text: <input type="text" className='input-box'value={value} onChange={onChange}/>
         </label>
         <button onClick={enterButton}>Enter</button>
       </form>

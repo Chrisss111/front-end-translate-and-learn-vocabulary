@@ -93,7 +93,7 @@ function App() {
 
   } else if (appMode === APP_MODES.translatedPage) {
     // ADD BUTTON TO SAVED VOCAB LISTS-LOOK AT WHAT DID FOR DISPLAYEDSAVEDLIST SECOND BUTTON (one to go to go back to saved listings)
-    content = (<div><TranslatedPage></TranslatedPage></div>)
+    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick}></TranslatedPage></div>)
     modeTitle = 'Your Translated Words'
     nameChangePageButton = 'Homepage' 
     
