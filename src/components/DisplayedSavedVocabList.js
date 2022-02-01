@@ -9,7 +9,7 @@ import axios from "axios";
 const DisplayedSavedVocabList = (props) => {
   
   const [vocabList, setVocabList] = useState(null);
-  const [deleteList, setDeleteList] = useState(false);
+ 
 
   useEffect(() => {
     axios.get(`http://localhost:5000/vocablists/${props.selectedListID}/words`)
@@ -18,10 +18,7 @@ const DisplayedSavedVocabList = (props) => {
          });
   }, []);
 
-  // putting useeffect inside an if statement also gets an error message
-  // if (deleteList === true){
-    
-  // }
+
 
   const goBackToListingsButton = () => {
     props.goBackToListingsClick(props.id);
@@ -38,9 +35,6 @@ const DisplayedSavedVocabList = (props) => {
             // consider saying the name of the deleted vocab list in the alert message
             return response.data
           });
-   
-    // setDeleteList(true)
-    // console.log(deleteList)
 
   };
 
