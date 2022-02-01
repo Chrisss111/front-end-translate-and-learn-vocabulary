@@ -28,16 +28,19 @@ const DisplayedSavedVocabList = (props) => {
   };
 
   const deleteListButton = () => {
-    props.deleteListButtonClick()
+    
     // get eror message-can't use sueffect in function? has to be in component?
     // useEffect(() => {
-    //   axios.delete(`http://localhost:5000/vocablists/${props.selectedListID}/words`)
-    //       .then(response => {
-    //         return response.data
-    //       });
-    // }, []);
-    setDeleteList(true)
-    console.log(deleteList)
+      axios.delete(`http://localhost:5000/vocablists/${props.selectedListID}/words`)
+          .then(response => {
+            props.deleteListButtonClick()
+            alert("You have successfully deleted the vocab list")
+            // consider saying the name of the deleted vocab list in the alert message
+            return response.data
+          });
+   
+    // setDeleteList(true)
+    // console.log(deleteList)
 
   };
 
