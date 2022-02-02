@@ -43,7 +43,7 @@ function App() {
 
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
   const [selectedListID, setSelectedListID] = useState(null);
-  const [selectedLang, setSelectedLang] = useState('');
+  const [text, setText] = useState('');
   const [dropdownLanguage, setDropDownLanguage] = useState("Lang of Your Text");
 
   let content = ''
@@ -70,13 +70,14 @@ function App() {
     setSelectedListID(id)
   };
 
-  const languageDropdownMenuChange = (id) => {
-    setDropDownLanguage(id)
+  const languageDropdownMenuChange = (event) => {
+    setDropDownLanguage(event)
   }
 
-  const enterButtonClick = (props) =>{
+  const enterButtonClick = (event) =>{
     setAppMode(APP_MODES.translatedPage)
-    
+    setText(event.value)
+    // console.log(name);
   };
 
   const deleteListButtonClick = (props) =>{
@@ -86,8 +87,9 @@ function App() {
   };
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput enterButtonClick={enterButtonClick} languageDropdownMenuChange={languageDropdownMenuChange}>
+    <TextInput enterButtonClick={enterButtonClick}>
     </TextInput>
+    <LanguageDropdown languageDropdownMenuChange={languageDropdownMenuChange}></LanguageDropdown>
     </div>);
     modeTitle = 'Landing Page'
     nameChangePageButton = 'Saved Vocab Lists' 

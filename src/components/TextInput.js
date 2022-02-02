@@ -11,18 +11,23 @@ const TextInput = (props) => {
 
   const [value, setValue] = useState('');
 
+  console.log(value);
+
   const onChange = (event) => {
     setValue(event.target.value);
-    console.log(value)
+    const target = event.target;
+    const name = target.value;
+  
+    console.log(name);
   };
 
     return <div>
       <h1>Please Input Your Text</h1>
       <form>
         <label> 
-          Text: <input type="text" className='input-box'value={value} onChange={onChange}/>
+          Text: <textarea type="text" className='text-area'value={value} onChange={onChange}/>
         </label>
-        <LanguageDropdown></LanguageDropdown>
+        {/* <LanguageDropdown></LanguageDropdown> */}
         <button onClick={enterButton}>Enter</button>
       </form>
     </div>
