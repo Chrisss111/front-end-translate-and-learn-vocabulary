@@ -1,4 +1,16 @@
-.text-input {
-    size: 200px
+.text-area {
+    font-size: 26px
 
+}
+
+.text-input-container, button, select {
+    font-size: 22px
+}
+
+button  {
+    padding: 10px 15px ;
+}
+
+select  {
+    margin: 20px 0 ;
 }

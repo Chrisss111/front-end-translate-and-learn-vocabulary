@@ -19,11 +19,11 @@ const LanguageDropdown = (props) => {
     
   };
 
-  return <div>Choose the language of your text:<select className="language-dropdown-menu"
-  // value={dropdownLanguage} 
+  return <div><select className="language-dropdown-menu"
+  value={props.dropdownLanguage} 
   onChange={languageDropdownMenu} 
   >
-  <option className="language-dropdown-option" value=""></option>
+  <option className="language-dropdown-option" value="Select Your Language">Select Your Language</option>
   <option className="language-dropdown-option" value="fr">French</option>
   <option className="language-dropdown-option" value="es">Spanish</option>
   <option className="language-dropdown-option" value="de">German</option>
@@ -31,7 +31,8 @@ const LanguageDropdown = (props) => {
   <option className="language-dropdown-option" value="it">Italian</option>
   <option className="language-dropdown-option" value="ar">Arabic</option>
   <option className="language-dropdown-option" value="nl">Dutch</option>
-</select></div>;
+</select>
+</div>
 };
 
 export default LanguageDropdown;

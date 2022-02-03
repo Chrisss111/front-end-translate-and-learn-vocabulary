@@ -44,7 +44,7 @@ function App() {
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
   const [selectedListID, setSelectedListID] = useState(null);
   const [text, setText] = useState('');
-  const [dropdownLanguage, setDropDownLanguage] = useState('');
+  const [dropdownLanguage, setDropDownLanguage] = useState('Select Language');
 
 
   let content = ''
@@ -94,9 +94,7 @@ function App() {
   };
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange}>
-    </TextInput>
-    <LanguageDropdown languageDropdownMenuChange={languageDropdownMenuChange}></LanguageDropdown>
+    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange} languageDropdownMenuChange={languageDropdownMenuChange} dropdownLanguage={dropdownLanguage}/>
     </div>);
     modeTitle = 'Landing Page'
     nameChangePageButton = 'Saved Vocab Lists' 
@@ -127,10 +125,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Translate and Build Vocabulary
-        <p>
+        <h1>Translate and Build Vocabulary</h1>
           <Title text={modeTitle}></Title>
-        </p>
         <div>
         <Button name={nameChangePageButton} changePageButtonClick={changePageButtonClick}></Button>
         </div>
