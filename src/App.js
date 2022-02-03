@@ -44,11 +44,13 @@ function App() {
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
   const [selectedListID, setSelectedListID] = useState(null);
   const [text, setText] = useState('');
-  const [dropdownLanguage, setDropDownLanguage] = useState("Lang of Your Text");
+  const [dropdownLanguage, setDropDownLanguage] = useState('');
+
 
   let content = ''
   let modeTitle = ''
   let nameChangePageButton = '' 
+
 
   const changePageButtonClick = (props) => {
     if (nameChangePageButton === 'Saved Vocab Lists'){
@@ -71,13 +73,18 @@ function App() {
   };
 
   const languageDropdownMenuChange = (event) => {
-    setDropDownLanguage(event)
+    setDropDownLanguage(event.target.value)
+    console.log(dropdownLanguage)
+  }
+
+  const textOnChange = (event) => {
+    setText(event.target.value)
+    console.log(text);
   }
 
   const enterButtonClick = (event) =>{
     setAppMode(APP_MODES.translatedPage)
-    setText(event.value)
-    // console.log(name);
+    
   };
 
   const deleteListButtonClick = (props) =>{
@@ -87,7 +94,7 @@ function App() {
   };
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput enterButtonClick={enterButtonClick}>
+    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange}>
     </TextInput>
     <LanguageDropdown languageDropdownMenuChange={languageDropdownMenuChange}></LanguageDropdown>
     </div>);
@@ -108,7 +115,7 @@ function App() {
 
   } else if (appMode === APP_MODES.translatedPage) {
     // ADD BUTTON TO SAVED VOCAB LISTS-LOOK AT WHAT DID FOR DISPLAYEDSAVEDLIST SECOND BUTTON (one to go to go back to saved listings)
-    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick}></TranslatedPage></div>)
+    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick} text={text} original_lang={dropdownLanguage}></TranslatedPage></div>)
     modeTitle = 'Your Translated Words'
     nameChangePageButton = 'Homepage' 
     

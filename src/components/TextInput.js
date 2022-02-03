@@ -9,23 +9,26 @@ const TextInput = (props) => {
     props.enterButtonClick()
   };
 
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
 
-  console.log(value);
+  // console.log(value);
 
   const onChange = (event) => {
-    setValue(event.target.value);
-    const target = event.target;
-    const name = target.value;
-  
-    console.log(name);
+    // setValue(event.target.value);
+
+    props.textOnChange(event)
+    // const target = event.target;
+    // const name = target.value;
+    // console.log(name);
   };
 
     return <div>
       <h1>Please Input Your Text</h1>
       <form>
         <label> 
-          Text: <textarea type="text" className='text-area'value={value} onChange={onChange}/>
+          Text: <textarea type="text" className='text-area'
+          // value={value} 
+          onChange={onChange}/>
         </label>
         {/* <LanguageDropdown></LanguageDropdown> */}
         <button onClick={enterButton}>Enter</button>

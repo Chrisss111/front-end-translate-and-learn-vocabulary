@@ -65,7 +65,7 @@ const DisplayedSavedVocabList = (props) => {
       <section><button onClick={deleteListButton}>Delete This Vocab List</button></section>
     </div>;
   } else {
-    return <p>please wait as we gather you saved lists</p>
+    return <p>please wait as we gather your saved vocabulary lists</p>
     }
   };
 

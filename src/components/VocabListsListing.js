@@ -19,7 +19,7 @@ const VocabListsListing = (props) => {
   };
 
   const vocabListItems = vocabLists.map((item) => {
-    return <li>{item.name} <button onClick={() => selectButton(item.id)}>Select</button></li>
+    return <li key={item.id}>{item.name} <button onClick={() => selectButton(item.id)}>Select</button></li>
   });
 
   return <div><h1>Select the vocabulary list you would like to review</h1>
