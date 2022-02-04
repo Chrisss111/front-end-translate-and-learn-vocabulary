@@ -127,7 +127,7 @@ const TranslatedPage = (props) => {
       return <div className='word-list-item' key={i}>
         <p> <strong>{item.input}</strong>: {item.translatedText} </p>
 
-        <a href={link}> Google Translate Page for {item.input}</a>
+        <a href={link}> Google Translate page for {item.input}</a>
         <form>
           <label>
             My Notes: <input onChange={createOnChange(i)} type="text" />

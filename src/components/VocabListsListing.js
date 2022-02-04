@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './Button';
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import './VocabListsListing.css'
 
 const VocabListsListing = (props) => {
   const [vocabLists, setVocabLists] = useState([]);
@@ -19,21 +20,28 @@ const VocabListsListing = (props) => {
   };
 
   const vocabListItems = vocabLists.map((item) => {
-    return <li key={item.id}>{item.name} <button onClick={() => selectButton(item.id)}>Select</button></li>
+    return <div
+      className='vocab-list-item' key={item.id}>
+        <p className='list-name'>{item.name}
+        <button className="select-button" onClick={() => selectButton(item.id)}>Select</button>
+        </p>
+      </div>
   });
 
-  return <div><h1>Select the vocabulary list you would like to review</h1>
+  return <div className='vocab-lists-listings-container'>
+    
+    <h1>Select the vocabulary list you would like to review</h1>
   {/* Name of vocab list-think have to use hook/state to make them appear based on what backend API request says */}
   <div>
-    <ul>{vocabListItems}</ul>
+    <div className='vocab-list-div'>{vocabListItems}</div>
     {/* <button onClick={selectButton}>Select</button> */}
   {/* <Button title='Select'>{props.title}</Button> */}
   </div>
   </div>;
 };
-VocabListsListing.defaultProps  = {
-    vocabListName: '1. Test Vocab List'
-};
+// VocabListsListing.defaultProps  = {
+//     vocabListName: '1. Test Vocab List'
+// };
 export default VocabListsListing;
 
 // rafce-basic component structure

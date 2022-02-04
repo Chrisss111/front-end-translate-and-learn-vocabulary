@@ -1,0 +1,45 @@
+*{margin: 0;
+    padding: 0;}
+    
+    .vocab-list-div{
+        
+        background-color: rgb(217, 226, 241);
+    }
+
+    /* 
+    .text-left, .text-right {
+        width: 50%;
+    }
+    
+    .word-text{
+        margin: 50px;
+        text-align: left;
+    } */
+    .vocab-lists-listings-container {
+        font-size: 22px;
+    }
+    
+    .list-name {
+        margin: 20px;
+        /* padding: 10px; */
+
+    }
+    
+    
+    .vocab-list-item{
+
+        font-size: 22px;
+        /* display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 150px; 
+  
+        margin: 20px;
+        align-items: flex-start; */
+    }
+
+    .select-button {
+        margin: 5px;
+        margin-left: 10px;
+        padding: 10px;
+    }

@@ -53,7 +53,7 @@ const DisplayedSavedVocabList = (props) => {
       console.log(item);
       return <div className='word-list-item'> 
         <p><strong>{item.selected_word}</strong>: {item.translation}</p>
-        <a href={item.link}>Google Translate Page for {item.selected_word}</a>
+        <a href={item.link}>Google Translate page for {item.selected_word}</a>
         <p>My notes: {item.notes}</p>
       </div>
       
@@ -62,7 +62,7 @@ const DisplayedSavedVocabList = (props) => {
 
     // }
     return <div
-      className='translated-page-container'>
+      className='displayed-saved-vocab-list-container'>
       <button onClick={goBackToListingsButton}>Saved Vocab Lists</button>
       <h1>{vocabList.vocablist.name}</h1>
 
