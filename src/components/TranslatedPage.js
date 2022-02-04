@@ -7,8 +7,11 @@ import './TranslatedPage.css'
 const TranslatedPage = (props) => {
   const [vocabList, setVocabList] = useState(null);
   const [savePayload, setSavePayload] = useState(null)
+  // const [newVocabListName, setNewVocabListName] = useState('')
+
   let payl = null
   let postRequestDict = null 
+  let newVocabListName1 = ''
 
   // const [textInputData, setTextInputData] = useState([]);
 
@@ -30,14 +33,14 @@ const TranslatedPage = (props) => {
     }
   }
 
-  console.log("wordstotranslatearray")
-  console.log(wordsToTranslateArray)
+  // console.log("wordstotranslatearray")
+  // console.log(wordsToTranslateArray)
 
 
   const body = { words: wordsToTranslateArray, lang: "en", original_lang: props.original_lang }
 
-  console.log("this is body:")
-  console.log(body)
+  // console.log("this is body:")
+  // console.log(body)
 
   useEffect(() => {
 
@@ -60,9 +63,11 @@ const TranslatedPage = (props) => {
 
  
   const onChange = (event) => {
+    props.onChangeSave()
     // setValue(event.target.value);
-    console.log("notes test")
-    console.log(event.target.value)
+    // console.log("save list name test")
+    // console.log(event.target.value)
+    // newVocabListName=event.target.value
     // props.textOnChange(event)
     // const target = event.target;
     // const name = target.value;
@@ -72,7 +77,7 @@ const TranslatedPage = (props) => {
   
   if (vocabList != null) {
     console.log(`data returned from CALL to backend API translation enpoint:`)
-    console.log(vocabList)
+    // console.log(vocabList)
     // console.log(vocabList.input)
     // console.log(vocabList.translatedText)
 
@@ -104,7 +109,7 @@ const TranslatedPage = (props) => {
   
       }
     }
-    postRequestDict={"vocablist": {"name": "testing post request list 3", "text": props.text},"words": payl}
+    postRequestDict={"vocablist": {"name": props.newVocabListName, "text": props.text},"words": payl}
 
     console.log('postRequestDict::::')
     console.log(postRequestDict)
@@ -113,11 +118,16 @@ const TranslatedPage = (props) => {
       // props.saveButtonClick(props.id);
       // do as alert (with text input) OR somehow make a text box appear
       // alert("Input the name of your vocab list:")
+
+      props.saveButtonClick()
+
+
       axios.post("http://localhost:5000/vocablists", postRequestDict)
             .then(response => {
               console.log(response.data)
               return response.data
             });
+            
     };
   
     const wordListItems = vocabList.map((item, i) => {
@@ -151,7 +161,19 @@ const TranslatedPage = (props) => {
           <div>{wordListItems}</div>
         </div>
       </div>
-      <button onClick={saveButton}>Save This Vocab List</button>
+      {/* <section className='save-list-section'> */}
+      <form className='save-list-form'>
+        <p className='save-list-title'>Save This Vocab List!</p>
+        {/* <label>Type name of vocab list</label> */}
+        <input type="text" className='save-list-text-input'
+          // value={value} 
+          onChange={onChange} placeholder='save this vocab list as...' cols='5' rows='35'/>
+        {/* <button onClick={enterButton}>Enter</button> */}
+       
+      
+      <button onClick={saveButton}>Save</button>
+      </form>
+      {/* </section> */}
     </div>
 
   } else {

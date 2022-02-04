@@ -51,7 +51,7 @@ const DisplayedSavedVocabList = (props) => {
     const wordListItems = vocabList.words.map((item) => {
 
       console.log(item);
-      return <div className='word-list-item'> 
+      return <div className='word-list-item' key={item.id}> 
         <p><strong>{item.selected_word}</strong>: {item.translation}</p>
         <a href={item.link}>Google Translate page for {item.selected_word}</a>
         <p>My notes: {item.notes}</p>

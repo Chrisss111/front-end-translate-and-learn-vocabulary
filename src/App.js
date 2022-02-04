@@ -45,6 +45,7 @@ function App() {
   const [selectedListID, setSelectedListID] = useState(null);
   const [text, setText] = useState('');
   const [dropdownLanguage, setDropDownLanguage] = useState('Select Language');
+  const [newVocabListName, setNewVocabListName] = useState('')
 
 
   let content = ''
@@ -82,6 +83,11 @@ function App() {
     console.log(text);
   }
 
+  const onChangeSave = (event) => {
+    setNewVocabListName(event.target.value)
+    console.log(newVocabListName);
+  }
+
   const enterButtonClick = (event) =>{
     setAppMode(APP_MODES.translatedPage)
     
@@ -92,9 +98,17 @@ function App() {
     setAppMode(APP_MODES.vocabListsListing)
     
   };
+
+  const saveButtonClick = (props) =>{
+    console.log("FROM APP")
+    alert('Your vocabulary list has been successfully saved')
+    // setAppMode(APP_MODES.vocabListsListing)
+    
+  };
+
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange} languageDropdownMenuChange={languageDropdownMenuChange} dropdownLanguage={dropdownLanguage}/>
+    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange} languageDropdownMenuChange={languageDropdownMenuChange} dropdownLanguage={dropdownLanguage} onChangeSave={onChangeSave} newVocabListName={newVocabListName}/>
     </div>);
     modeTitle = 'Landing Page'
     nameChangePageButton = 'Saved Vocab Lists' 
@@ -113,7 +127,7 @@ function App() {
 
   } else if (appMode === APP_MODES.translatedPage) {
     // ADD BUTTON TO SAVED VOCAB LISTS-LOOK AT WHAT DID FOR DISPLAYEDSAVEDLIST SECOND BUTTON (one to go to go back to saved listings)
-    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick} text={text} original_lang={dropdownLanguage}></TranslatedPage></div>)
+    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick} saveButtonClick={saveButtonClick} text={text} original_lang={dropdownLanguage}></TranslatedPage></div>)
     modeTitle = 'Your Translated Words'
     nameChangePageButton = 'Homepage' 
     

@@ -6,6 +6,8 @@ import './TextInput.css'
 
 const TextInput = (props) => {
 
+  const placeholder='\n1.) Copy and paste your text \n\n2.) Put an asterisk (*) infront of all the words you want translated \n\n3.) Select the language of the original text in the dropdown menu'
+
   const enterButton = () => {
     props.enterButtonClick()
   };
@@ -28,7 +30,7 @@ const TextInput = (props) => {
       <form>
         <textarea type="text" className='text-area'
           // value={value} 
-          onChange={onChange} placeholder='type in your words to be translated' cols='60' rows='20'/>
+          onChange={onChange} placeholder={placeholder} cols='60' rows='20'/>
         <LanguageDropdown languageDropdownMenuChange={props.languageDropdownMenuChange} dropdownLanguage={props.dropdownLanguage}/>
         <button onClick={enterButton}>Enter</button>
       </form>
