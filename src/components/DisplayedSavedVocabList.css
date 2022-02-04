@@ -1,0 +1,37 @@
+*{margin: 0;
+    padding: 0;}
+    
+    .text-and-words{
+        display: flex;
+        justify-content: space-around;
+        margin: 50px;
+        padding: 30px;
+        background-color: rgb(217, 226, 241);
+    }
+    
+    .text-left, .text-right {
+        width: 50%;
+    }
+    
+    .word-text{
+        margin: 50px;
+        text-align: left;
+    }
+    .translated-page-container, input {
+        font-size: 22px;
+    }
+    
+    input{
+        width: 300px;
+        padding: 5px;
+    }
+    
+    .word-list-item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 150px; 
+     /* increase height would increase height of container */
+        margin: 20px;
+        align-items: flex-start;
+    }

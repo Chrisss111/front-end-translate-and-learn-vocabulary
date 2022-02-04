@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import './DisplayedSavedVocabList.css'
 // import Words from './Words';
 // import Text from './Text';
 
@@ -50,20 +51,34 @@ const DisplayedSavedVocabList = (props) => {
     const wordListItems = vocabList.words.map((item) => {
 
       console.log(item);
-      return <li>{item.selected_word}: {item.translation} <div>google translate link: {item.link}</div> <div>notes: {item.notes}</div><section>--------</section></li>
+      return <div className='word-list-item'> 
+        <p><strong>{item.selected_word}</strong>: {item.translation}</p>
+        <a href={item.link}>Google Translate Page for {item.selected_word}</a>
+        <p>My notes: {item.notes}</p>
+      </div>
       
     });
     // for (let i=0; i< vocabList.words.length; i++){
 
     // }
-    return <div>
+    return <div
+      className='translated-page-container'>
       <button onClick={goBackToListingsButton}>Saved Vocab Lists</button>
       <h1>{vocabList.vocablist.name}</h1>
-      <div><p>{vocabList.vocablist.text}</p></div>
-      <div><ul>{wordListItems}</ul>
+
+      <div className="text-and-words">
+        <div className='text-left'>
+          <h2>Text:</h2>
+          <p className='word-text'>{vocabList.vocablist.text}</p>
+        </div>
+        <div className='text-right'>
+          <h2>Translated Words:</h2>
+          <div>{wordListItems}</div>
+        </div>
       </div>
       <section><button onClick={deleteListButton}>Delete This Vocab List</button></section>
     </div>;
+
   } else {
     return <p>please wait as we gather your saved vocabulary lists</p>
     }
