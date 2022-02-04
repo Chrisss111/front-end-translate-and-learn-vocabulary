@@ -125,7 +125,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Translate and Build Vocabulary</h1>
+        <h1 className='header-h1'>Translate and Build Vocabulary</h1>
           <Title text={modeTitle}></Title>
         <div>
         <Button name={nameChangePageButton} changePageButtonClick={changePageButtonClick}></Button>

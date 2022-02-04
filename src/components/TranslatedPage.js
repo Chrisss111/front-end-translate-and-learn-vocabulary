@@ -6,6 +6,9 @@ import './TranslatedPage.css'
 
 const TranslatedPage = (props) => {
   const [vocabList, setVocabList] = useState(null);
+  const [savePayload, setSavePayload] = useState(null)
+  let payl = null
+  let postRequestDict = null 
 
   // const [textInputData, setTextInputData] = useState([]);
 
@@ -41,36 +44,21 @@ const TranslatedPage = (props) => {
     axios
       .post(`http://localhost:5000/translation`, body)
       .then(response => {
-        return setVocabList(response.data)
+        return setVocabList(response.data) 
+        // map here to create list of word objects(with notes)
       });
   }, []);
+
+  // [{notes: ''}]
+  
 
   const goBackToListingsButton = () => {
     props.goBackToListingsClick(props.id);
   };
+  // vocablist name will be a user input value
 
-  const saveButton = () => {
-    // props.saveButtonClick(props.id);
-    // do as alert (with text input) OR somehow make a text box appear
-    alert("Input the name of your vocab list:")
-    //     return <div>
-    //     <form>
-    //     <label>
-    // new vocab list name: <input type="text"/>
-    // </label>
-    // </form>
-    // </div>
 
-    //     return <div>
-    //     <form>
-    //     <label>
-    // Name of new vocab list: <input type="text"/>
-    // </label>
-    // </form>
-    // </div>
-    // create component? and make it appear when button pressed via function in app.js?
-  };
-
+ 
   const onChange = (event) => {
     // setValue(event.target.value);
     console.log("notes test")
@@ -81,13 +69,57 @@ const TranslatedPage = (props) => {
     // console.log(name);
   };
 
+  
   if (vocabList != null) {
     console.log(`data returned from CALL to backend API translation enpoint:`)
     console.log(vocabList)
     // console.log(vocabList.input)
     // console.log(vocabList.translatedText)
 
+    payl = vocabList.map((item, index) => {
 
+      return {"selected_word": item.input,
+      "translation": item.translatedText,
+      "notes": "",
+      "link": `https://translate.google.com/?sl=${body.original_lang}&tl=en&text=${item.input}&op=translate`,
+      "language": body.original_lang}
+
+    })
+    
+    // console.log("PAYL:::::")
+    // console.log(payl)
+    // console.log(payl[0].link)
+
+    const createOnChange = (index) =>{
+      return function(event) {
+        // on onchange update vocablist with updated notes at that index for
+        payl[index].notes = event.target.value
+        // console.log('savePayload::::')
+        // console.log(savePayload)
+
+        console.log("PAYL WITH UPDATED NOTES:::::")
+        console.log(payl)
+        // console.log(payl[0].link)
+        // console.log(`${index} and ${event.target.value}`)
+  
+      }
+    }
+    postRequestDict={"vocablist": {"name": "testing post request list 3", "text": props.text},"words": payl}
+
+    console.log('postRequestDict::::')
+    console.log(postRequestDict)
+
+    const saveButton = () => {
+      // props.saveButtonClick(props.id);
+      // do as alert (with text input) OR somehow make a text box appear
+      // alert("Input the name of your vocab list:")
+      axios.post("http://localhost:5000/vocablists", postRequestDict)
+            .then(response => {
+              console.log(response.data)
+              return response.data
+            });
+    };
+  
     const wordListItems = vocabList.map((item, i) => {
       const link = `https://translate.google.com/?sl=${body.original_lang}&tl=en&text=${item.input}&op=translate`
 
@@ -98,7 +130,7 @@ const TranslatedPage = (props) => {
         <a href={link}> Google Translate Page for {item.input}</a>
         <form>
           <label>
-            My Notes: <input onChange={onChange} type="text" />
+            My Notes: <input onChange={createOnChange(i)} type="text" />
           </label>
         </form>
 
