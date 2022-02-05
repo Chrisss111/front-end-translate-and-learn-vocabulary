@@ -28,8 +28,9 @@ const TranslatedPage = (props) => {
 
   for (let i = 0; i < textArray.length; i++) {
     if (textArray[i].startsWith('*')) {
-      wordsToTranslateArray.push(textArray[i].substring(1))
-      console.log(textArray[i].substring(1))
+      let text=textArray[i].replace(/[!@#$%^&?.,:{};())'"/]/g, "")
+      wordsToTranslateArray.push(text.substring(1))
+      // console.log(textArray[i].substring(1))
     }
   }
 
@@ -48,6 +49,8 @@ const TranslatedPage = (props) => {
       .post(`http://localhost:5000/translation`, body)
       .then(response => {
         const list = response.data.map((item, index) => {
+          // let word = item.input.replace(/[!@#$%^&?.,:{};())'"/]/g, "")
+          
 
           return {"selected_word": item.input,
           "translation": item.translatedText,
