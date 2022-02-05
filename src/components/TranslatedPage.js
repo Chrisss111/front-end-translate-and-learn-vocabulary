@@ -6,7 +6,7 @@ import './TranslatedPage.css'
 
 const TranslatedPage = (props) => {
   const [vocabList, setVocabList] = useState(null);
-  const [savePayload, setSavePayload] = useState(null)
+  // const [savePayload, setSavePayload] = useState(null)
   // const [newVocabListName, setNewVocabListName] = useState('')
 
   let payl = null
@@ -47,7 +47,16 @@ const TranslatedPage = (props) => {
     axios
       .post(`http://localhost:5000/translation`, body)
       .then(response => {
-        return setVocabList(response.data) 
+        const list = response.data.map((item, index) => {
+
+          return {"selected_word": item.input,
+          "translation": item.translatedText,
+          "notes": "",
+          "link": `https://translate.google.com/?sl=${body.original_lang}&tl=en&text=${item.input}&op=translate`,
+          "language": body.original_lang}
+    
+        });
+        return setVocabList(list) 
         // map here to create list of word objects(with notes)
       });
   }, []);
@@ -63,7 +72,7 @@ const TranslatedPage = (props) => {
 
  
   const onChange = (event) => {
-    props.onChangeSave()
+    props.onChangeSave(event)
     // setValue(event.target.value);
     // console.log("save list name test")
     // console.log(event.target.value)
@@ -81,15 +90,15 @@ const TranslatedPage = (props) => {
     // console.log(vocabList.input)
     // console.log(vocabList.translatedText)
 
-    payl = vocabList.map((item, index) => {
+    // payl = vocabList.map((item, index) => {
 
-      return {"selected_word": item.input,
-      "translation": item.translatedText,
-      "notes": "",
-      "link": `https://translate.google.com/?sl=${body.original_lang}&tl=en&text=${item.input}&op=translate`,
-      "language": body.original_lang}
+    //   return {"selected_word": item.input,
+    //   "translation": item.translatedText,
+    //   "notes": "",
+    //   "link": `https://translate.google.com/?sl=${body.original_lang}&tl=en&text=${item.input}&op=translate`,
+    //   "language": body.original_lang}
 
-    })
+    // })
     
     // console.log("PAYL:::::")
     // console.log(payl)
@@ -97,19 +106,25 @@ const TranslatedPage = (props) => {
 
     const createOnChange = (index) =>{
       return function(event) {
-        // on onchange update vocablist with updated notes at that index for
-        payl[index].notes = event.target.value
+        // on onchange update vocablist with  updated notes at that index for
+        const updatedVocabList = [...vocabList];
+        updatedVocabList[index].notes = event.target.value;
+        setVocabList(updatedVocabList);
+
+
+
+        // payl[index].notes = event.target.value
         // console.log('savePayload::::')
         // console.log(savePayload)
 
-        console.log("PAYL WITH UPDATED NOTES:::::")
-        console.log(payl)
+        // console.log("PAYL WITH UPDATED NOTES:::::")
+        // console.log(payl)
         // console.log(payl[0].link)
         // console.log(`${index} and ${event.target.value}`)
   
       }
     }
-    postRequestDict={"vocablist": {"name": props.newVocabListName, "text": props.text},"words": payl}
+    
 
     console.log('postRequestDict::::')
     console.log(postRequestDict)
@@ -119,6 +134,7 @@ const TranslatedPage = (props) => {
       // do as alert (with text input) OR somehow make a text box appear
       // alert("Input the name of your vocab list:")
 
+      postRequestDict={"vocablist": {"name": props.newVocabListName, "text": props.text},"words": vocabList}
       props.saveButtonClick()
 
 
@@ -131,13 +147,10 @@ const TranslatedPage = (props) => {
     };
   
     const wordListItems = vocabList.map((item, i) => {
-      const link = `https://translate.google.com/?sl=${body.original_lang}&tl=en&text=${item.input}&op=translate`
-
-
       return <div className='word-list-item' key={i}>
-        <p> <strong>{item.input}</strong>: {item.translatedText} </p>
+        <p> <strong>{item.selected_word}</strong>: {item.translation}</p>
 
-        <a href={link}> Google Translate page for {item.input}</a>
+        <a href={item.link}>Google Translate page for {item.selected_word}</a>
         <form>
           <label>
             My Notes: <input onChange={createOnChange(i)} type="text" />

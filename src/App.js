@@ -108,7 +108,7 @@ function App() {
 
   if (appMode === APP_MODES.landingPage) {
     content = (<div>
-    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange} languageDropdownMenuChange={languageDropdownMenuChange} dropdownLanguage={dropdownLanguage} onChangeSave={onChangeSave} newVocabListName={newVocabListName}/>
+    <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange} languageDropdownMenuChange={languageDropdownMenuChange} dropdownLanguage={dropdownLanguage}/>
     </div>);
     modeTitle = 'Landing Page'
     nameChangePageButton = 'Saved Vocab Lists' 
@@ -127,7 +127,7 @@ function App() {
 
   } else if (appMode === APP_MODES.translatedPage) {
     // ADD BUTTON TO SAVED VOCAB LISTS-LOOK AT WHAT DID FOR DISPLAYEDSAVEDLIST SECOND BUTTON (one to go to go back to saved listings)
-    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick} saveButtonClick={saveButtonClick} text={text} original_lang={dropdownLanguage}></TranslatedPage></div>)
+    content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick} saveButtonClick={saveButtonClick} text={text} original_lang={dropdownLanguage} onChangeSave={onChangeSave} newVocabListName={newVocabListName}></TranslatedPage></div>)
     modeTitle = 'Your Translated Words'
     nameChangePageButton = 'Homepage' 
     
