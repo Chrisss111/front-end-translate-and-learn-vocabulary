@@ -7,7 +7,7 @@ import VocabListsListing from './components/VocabListsListing';
 import DisplayedSavedVocabList from './components/DisplayedSavedVocabList';
 import TranslatedPage from './components/TranslatedPage';
 import LanguageDropdown from './components/LanguageDropdown';
-import Words from './components/Words';
+// import Words from './components/Words';
 import Button from './components/Button';
 
 
@@ -110,7 +110,7 @@ function App() {
     content = (<div>
     <TextInput enterButtonClick={enterButtonClick} textOnChange={textOnChange} languageDropdownMenuChange={languageDropdownMenuChange} dropdownLanguage={dropdownLanguage}/>
     </div>);
-    modeTitle = 'Landing Page'
+    modeTitle = 'TRANSLATE YOUR TEXT'
     nameChangePageButton = 'Saved Vocab Lists' 
 
   } else if (appMode === APP_MODES.displayedSavedVocabList) {
@@ -122,13 +122,13 @@ function App() {
     // displayed list component
   } else if (appMode === APP_MODES.vocabListsListing) {
     content = (<div><VocabListsListing selectButtonClick={selectButtonClick}></VocabListsListing></div>)
-    modeTitle = 'Vocab Lists'
+    modeTitle = 'SAVED VOCABULARY LISTS'
     nameChangePageButton = 'Homepage' 
 
   } else if (appMode === APP_MODES.translatedPage) {
     // ADD BUTTON TO SAVED VOCAB LISTS-LOOK AT WHAT DID FOR DISPLAYEDSAVEDLIST SECOND BUTTON (one to go to go back to saved listings)
     content = (<div><TranslatedPage goBackToListingsClick={goBackToListingsClick} saveButtonClick={saveButtonClick} text={text} original_lang={dropdownLanguage} onChangeSave={onChangeSave} newVocabListName={newVocabListName}></TranslatedPage></div>)
-    modeTitle = 'Your Translated Words'
+    modeTitle = 'YOUR TEXT AND TRANSLATED WORDS'
     nameChangePageButton = 'Homepage' 
     
   } else {

@@ -30,7 +30,7 @@ const VocabListsListing = (props) => {
 
   return <div className='vocab-lists-listings-container'>
     
-    <h1>Select the vocabulary list you would like to review</h1>
+    <h2 className='h2'>Select the Vocabulary List You Would Like to Review:</h2>
   {/* Name of vocab list-think have to use hook/state to make them appear based on what backend API request says */}
   <div>
     <div className='vocab-list-div'>{vocabListItems}</div>

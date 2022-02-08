@@ -4,7 +4,7 @@ padding: 0;}
 .text-and-words{
     display: flex;
     justify-content: space-around;
-    margin: 50px;
+    margin: 30px;
     margin-bottom: 30px;
     padding: 30px;
     background-color: rgb(217, 226, 241);
@@ -44,4 +44,9 @@ input{
 .save-list-title {
     font-size: 30px;
     font-weight: bold;
+}
+
+.waiting-message {
+    font-size: 25px;
+    font-style: italic;
 }

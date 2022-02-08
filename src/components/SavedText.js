@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// import React from 'react';
+// import PropTypes from 'prop-types';
 
-const SavedText = (props) => {
-  return <div></div>;
-};
+// const SavedText = (props) => {
+//   return <div></div>;
+// };
 
-// SavedText.PropTypes = {
-//     title: PropTypes.string
-// }
-export default SavedText;
+// // SavedText.PropTypes = {
+// //     title: PropTypes.string
+// // }
+// export default SavedText;
 
 

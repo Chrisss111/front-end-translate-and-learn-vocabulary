@@ -183,7 +183,7 @@ const TranslatedPage = (props) => {
         {/* <label>Type name of vocab list</label> */}
         <input type="text" className='save-list-text-input'
           // value={value} 
-          onChange={onChange} placeholder='save this vocab list as...' cols='5' rows='35'/>
+          onChange={onChange} placeholder='save this vocab list as...' cols='7' rows='45'/>
         {/* <button onClick={enterButton}>Enter</button> */}
        
       
@@ -193,7 +193,7 @@ const TranslatedPage = (props) => {
     </div>
 
   } else {
-    return <p>please wait as we gather your translated words</p>
+    return <p className='waiting-message'>please wait as we gather your translated words</p>
   }
 
 };

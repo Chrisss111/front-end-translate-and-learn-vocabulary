@@ -26,7 +26,7 @@ const TextInput = (props) => {
   };
 
     return <div className='text-input-container'>
-      <h1>Please Input Your Text</h1>
+      <h1 className='text-input-header'>Please Input Your Text:</h1>
       <form>
         <textarea type="text" className='text-area'
           // value={value} 
