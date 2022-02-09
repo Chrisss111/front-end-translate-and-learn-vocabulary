@@ -6,17 +6,32 @@ import './TextInput.css'
 
 const TextInput = (props) => {
 
-  const placeholder='\n1.) Copy and paste your text \n\n2.) Put an asterisk (*) infront of all the words you want translated \n\n3.) Select the language of the original text in the dropdown menu'
+  const [textInputVal, setTextInputVal] = useState("")
+
+  const placeholder='\n1.) Copy and paste your text \n\n2.) Put an asterisk (*) in front of all the words you want translated \n\n3.) Select the language of the original text in the dropdown menu'
 
   const enterButton = (e) => {
 
+    const textInputSplit = textInputVal.split(" ");
+    let asteriskCount = 0;
+
+    for (let i=0; i<textInputSplit.length; i++){
+      if (textInputSplit[i].startsWith("*")){
+        asteriskCount ++;
+        break 
+      }
+    }
     // if (){
     //   alert("Please indicate with an * which words you would like translated")
   if (props.dropdownLanguage === "Select Language"){
       e.preventDefault()
       alert("Please indicate the original language of your text")
 
-    } else {
+    } else if(asteriskCount===0){
+      e.preventDefault()
+      alert("Please indicate which word(s) you would like translated by placing an asterisk (*) in front of them")
+    }
+    else {
       props.enterButtonClick()
     }
     
@@ -32,7 +47,9 @@ const TextInput = (props) => {
     props.textOnChange(event)
     // const target = event.target;
     // const name = target.value;
-    // console.log(name);
+    setTextInputVal(event.target.value)
+    console.log("in textinput component:")
+    console.log(event.target.value);
   };
 
     return <div className='text-input-container'>
