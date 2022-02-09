@@ -8,13 +8,15 @@ const TextInput = (props) => {
 
   const placeholder='\n1.) Copy and paste your text \n\n2.) Put an asterisk (*) infront of all the words you want translated \n\n3.) Select the language of the original text in the dropdown menu'
 
-  const enterButton = () => {
+  const enterButton = (e) => {
 
     // if (){
     //   alert("Please indicate with an * which words you would like translated")
-  if (props.dropdownLanguage === ""){
+  if (props.dropdownLanguage === "Select Language"){
+      e.preventDefault()
       alert("Please indicate the original language of your text")
-    } else{
+
+    } else {
       props.enterButtonClick()
     }
     
@@ -41,7 +43,7 @@ const TextInput = (props) => {
           // value={value} 
           onChange={onChange} placeholder={placeholder} cols='60' rows='20'/>
           </div>
-        <LanguageDropdown languageDropdownMenuChange={props.languageDropdownMenuChange} dropdownLanguage={props.dropdownLanguage} required/>
+        <LanguageDropdown languageDropdownMenuChange={props.languageDropdownMenuChange} dropdownLanguage={props.dropdownLanguage}/>
         <button onClick={enterButton}>Enter</button>
       </form>
     </div>
