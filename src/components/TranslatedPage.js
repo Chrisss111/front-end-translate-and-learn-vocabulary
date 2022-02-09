@@ -136,7 +136,12 @@ const TranslatedPage = (props) => {
       // props.saveButtonClick(props.id);
       // do as alert (with text input) OR somehow make a text box appear
       // alert("Input the name of your vocab list:")
+      if (props.newVocabListName===""){
+        alert("Please input a name for your vocabulary list")
+        return
+        
 
+      } else {
       postRequestDict={"vocablist": {"name": props.newVocabListName, "text": props.text},"words": vocabList}
       props.saveButtonClick()
 
@@ -148,7 +153,7 @@ const TranslatedPage = (props) => {
             });
             
     };
-  
+    }
     const wordListItems = vocabList.map((item, i) => {
       return <div className='word-list-item' key={i}>
         <p> <strong>{item.selected_word}</strong>: {item.translation}</p>
@@ -183,7 +188,7 @@ const TranslatedPage = (props) => {
         {/* <label>Type name of vocab list</label> */}
         <input type="text" className='save-list-text-input'
           // value={value} 
-          onChange={onChange} placeholder='save this vocab list as...' cols='7' rows='45'/>
+          onChange={onChange} placeholder='save this vocab list as...' cols='7' rows='50'/>
         {/* <button onClick={enterButton}>Enter</button> */}
        
       
@@ -193,7 +198,7 @@ const TranslatedPage = (props) => {
     </div>
 
   } else {
-    return <p className='waiting-message'>please wait as we gather your translated words</p>
+    return <p className='waiting-message'>Please wait as we gather your translated words</p>
   }
 
 };

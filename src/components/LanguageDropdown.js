@@ -23,7 +23,7 @@ const LanguageDropdown = (props) => {
   value={props.dropdownLanguage} 
   onChange={languageDropdownMenu} 
   >
-  <option className="language-dropdown-option" value="Select Your Language">Select Language</option>
+  <option className="language-dropdown-option" value="select-language">Select Language</option>
   <option className="language-dropdown-option" value="fr">French</option>
   <option className="language-dropdown-option" value="es">Spanish</option>
   <option className="language-dropdown-option" value="de">German</option>

@@ -2,10 +2,14 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import './DisplayedSavedVocabList.css'
+import makeWordsBold from '../util/makeBold'
+
 // import Words from './Words';
 // import Text from './Text';
 
 // text component + series of word components
+
+
 
 const DisplayedSavedVocabList = (props) => {
   
@@ -32,7 +36,7 @@ const DisplayedSavedVocabList = (props) => {
       axios.delete(`http://localhost:5000/vocablists/${props.selectedListID}/words`)
           .then(response => {
             props.deleteListButtonClick()
-            alert("You have successfully deleted the vocab list")
+            alert("Your vocabulary list has been deleted successfully")
             // consider saying the name of the deleted vocab list in the alert message
             return response.data
           });
@@ -58,9 +62,7 @@ const DisplayedSavedVocabList = (props) => {
       </div>
       
     });
-    // for (let i=0; i< vocabList.words.length; i++){
-
-    // }
+   
     return <div
       className='displayed-saved-vocab-list-container'>
       <button onClick={goBackToListingsButton}>Saved Vocab Lists</button>
@@ -69,7 +71,7 @@ const DisplayedSavedVocabList = (props) => {
       <div className="text-and-words">
         <div className='text-left'>
           <h2>Text:</h2>
-          <p className='word-text'>{vocabList.vocablist.text}</p>
+          <p className='word-text'>{makeWordsBold(vocabList.vocablist.text)}</p>
         </div>
         <div className='text-right'>
           <h2>Translated Words:</h2>

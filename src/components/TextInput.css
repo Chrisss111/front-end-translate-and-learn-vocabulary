@@ -6,6 +6,12 @@
 
 }
 
+.textarea-div {
+    background-color: rgb(217, 226, 241);
+    padding: 20px;
+
+}
+
 .text-input-container, button, select {
     font-size: 22px
 }
@@ -13,7 +19,7 @@
 .text-input-header {
     font-size: 30px;
     padding: 10px;
-    color: navy;
+    color: rgb(1, 1, 102);
     
 }
 
