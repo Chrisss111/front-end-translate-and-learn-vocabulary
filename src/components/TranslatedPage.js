@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import TextInput from './TextInput';
 import './TranslatedPage.css'
+import makeWordsBold from '../util/makeBold'
 
 const TranslatedPage = (props) => {
   const [vocabList, setVocabList] = useState(null);
@@ -175,7 +176,7 @@ const TranslatedPage = (props) => {
       <div className="text-and-words">
         <div className='text-left'>
           <h2>Your Text:</h2>
-          <p className='word-text'>{props.text}</p>
+          <p className='word-text'>{makeWordsBold(props.text)}</p>
         </div>
         <div className='text-right'>
           <h2>Your Translated Words:</h2>
