@@ -82,7 +82,7 @@ const DisplayedSavedVocabList = (props) => {
     </div>;
 
   } else {
-    return <p>please wait as we gather your saved vocabulary lists</p>
+    return <p>please wait as we gather your saved vocabulary list</p>
     }
   };
 

@@ -41,7 +41,7 @@ const TextInput = (props) => {
           // value={value} 
           onChange={onChange} placeholder={placeholder} cols='60' rows='20'/>
           </div>
-        <LanguageDropdown languageDropdownMenuChange={props.languageDropdownMenuChange} dropdownLanguage={props.dropdownLanguage}/>
+        <LanguageDropdown languageDropdownMenuChange={props.languageDropdownMenuChange} dropdownLanguage={props.dropdownLanguage} required/>
         <button onClick={enterButton}>Enter</button>
       </form>
     </div>

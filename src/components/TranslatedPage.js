@@ -133,11 +133,13 @@ const TranslatedPage = (props) => {
     console.log('postRequestDict::::')
     console.log(postRequestDict)
 
-    const saveButton = () => {
+    const saveButton = (e) => {
+      
       // props.saveButtonClick(props.id);
       // do as alert (with text input) OR somehow make a text box appear
       // alert("Input the name of your vocab list:")
       if (props.newVocabListName===""){
+        e.preventDefault()
         alert("Please input a name for your vocabulary list")
         return
         
