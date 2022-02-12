@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  
 }
 
 .App-header {
@@ -8,26 +7,18 @@
   color: navy;
 }
 
-h2{
+h2 {
   color: navy;
 }
+
 .header-h1 {
   margin-bottom: 35px;
   font-style: italic;
   font-size: 20px;
   padding-top: 30px; 
-  
 }
+
 .page-titles {
   font-size: 40px;
   padding: 10px;
 }
-
-/* .App-header {
-  
-}
-
-.App-link {
-  color: #61dafb;
-} */
-

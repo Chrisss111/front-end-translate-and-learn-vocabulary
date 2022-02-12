@@ -1,7 +1,6 @@
 import React from 'react';
 import LanguageDropdown from './LanguageDropdown';
-import { useState, useEffect } from 'react';
-import axios from "axios";
+import { useState } from 'react';
 import './TextInput.css'
 
 const TextInput = (props) => {
@@ -21,8 +20,7 @@ const TextInput = (props) => {
         break 
       }
     }
-    // if (){
-    //   alert("Please indicate with an * which words you would like translated")
+
   if (props.dropdownLanguage === "Select Language"){
       e.preventDefault()
       alert("Please indicate the original language of your text")
@@ -34,22 +32,11 @@ const TextInput = (props) => {
     else {
       props.enterButtonClick()
     }
-    
   };
 
-  // const [value, setValue] = useState('');
-
-  // console.log(value);
-
   const onChange = (event) => {
-    // setValue(event.target.value);
-
     props.textOnChange(event)
-    // const target = event.target;
-    // const name = target.value;
     setTextInputVal(event.target.value)
-    console.log("in textinput component:")
-    console.log(event.target.value);
   };
 
     return <div className='text-input-container'>
@@ -57,7 +44,6 @@ const TextInput = (props) => {
       <form>
         <div className='textarea-div'>
         <textarea type="text" className='text-area'
-          // value={value} 
           onChange={onChange} placeholder={placeholder} cols='60' rows='20'/>
           </div>
         <LanguageDropdown languageDropdownMenuChange={props.languageDropdownMenuChange} dropdownLanguage={props.dropdownLanguage}/>

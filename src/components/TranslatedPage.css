@@ -32,7 +32,6 @@ input{
     flex-direction: column;
     justify-content: space-evenly;
     height: 150px; 
- /* increase height would increase height of container */
     margin: 20px;
     align-items: flex-start;
 }

@@ -7,7 +7,6 @@ const Button = (props) => {
     
   };
   
-
   return <button onClick={buttonClick}>{props.name}</button>;
 };
 

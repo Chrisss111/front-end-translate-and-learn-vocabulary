@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './Button';
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import './VocabListsListing.css'
@@ -17,7 +16,6 @@ const VocabListsListing = (props) => {
   if (vocabLists != null) {
     const selectButton = (id) => {
       props.selectButtonClick(id);
-      console.log("test select button")
     };
 
     const vocabListItems = vocabLists.map((item) => {
@@ -32,20 +30,15 @@ const VocabListsListing = (props) => {
     return <div className='vocab-lists-listings-container'>
       
       <h2 className='h2'>Select the Vocabulary List You Would Like to Review:</h2>
-    {/* Name of vocab list-think have to use hook/state to make them appear based on what backend API request says */}
     <div>
       <div className='vocab-list-div'>{vocabListItems}</div>
-      {/* <button onClick={selectButton}>Select</button> */}
-    {/* <Button title='Select'>{props.title}</Button> */}
     </div>
     </div>
    } else {
     return <p className='waiting-message'>Please wait as we gather your saved vocabulary lists</p>
   }
 };
-// VocabListsListing.defaultProps  = {
-//     vocabListName: '1. Test Vocab List'
-// };
+
 export default VocabListsListing;
 
-// rafce-basic component structure
+

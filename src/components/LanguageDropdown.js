@@ -1,22 +1,9 @@
 import React from 'react';
 
-
 const LanguageDropdown = (props) => {
-
-  // const [dropdownLanguage, setDropDownLanguage] = useState("Lang of Your Text");
-
-  // const [value, setValue] = useState('');
-
-  // console.log("Language Dropdown Console.log:")
-  // console.log(dropdownLanguage)
 
   const languageDropdownMenu = (event) => {
     props.languageDropdownMenuChange(event)
-    // setValue(event.target.value);
-    // setDropDownLanguage(event.target.value);
-    
-    
-    
   };
 
   return <div><select className="language-dropdown-menu"
