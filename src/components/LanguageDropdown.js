@@ -1,5 +1,7 @@
 import React from 'react';
 
+const defaultValue = "select-language";
+
 const LanguageDropdown = (props) => {
 
   const languageDropdownMenu = (event) => {
@@ -10,7 +12,7 @@ const LanguageDropdown = (props) => {
   value={props.dropdownLanguage} 
   onChange={languageDropdownMenu} 
   >
-  <option className="language-dropdown-option" value="select-language">Select Language</option>
+  <option className="language-dropdown-option" value={defaultValue}>Select Language</option>
   <option className="language-dropdown-option" value="fr">French</option>
   <option className="language-dropdown-option" value="es">Spanish</option>
   <option className="language-dropdown-option" value="de">German</option>
@@ -21,6 +23,8 @@ const LanguageDropdown = (props) => {
 </select>
 </div>
 };
+
+LanguageDropdown.defaultValue = defaultValue;
 
 export default LanguageDropdown;
 

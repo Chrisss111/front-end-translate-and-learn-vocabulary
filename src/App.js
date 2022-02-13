@@ -6,6 +6,7 @@ import VocabListsListing from './components/VocabListsListing';
 import DisplayedSavedVocabList from './components/DisplayedSavedVocabList';
 import TranslatedPage from './components/TranslatedPage';
 import Button from './components/Button';
+import LanguageDropdown from './components/LanguageDropdown';
 
 
 const APP_MODES = {
@@ -20,7 +21,7 @@ function App() {
   const [appMode, setAppMode] = useState(APP_MODES.landingPage);
   const [selectedListID, setSelectedListID] = useState(null);
   const [text, setText] = useState('');
-  const [dropdownLanguage, setDropDownLanguage] = useState('Select Language');
+  const [dropdownLanguage, setDropDownLanguage] = useState(LanguageDropdown.defaultValue);
   const [newVocabListName, setNewVocabListName] = useState('')
 
   let content = ''

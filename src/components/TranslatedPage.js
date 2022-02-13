@@ -10,11 +10,11 @@ const TranslatedPage = (props) => {
   let postRequestDict = null 
 
   const wordsToTranslateArray = []
-  const textArray = props.text.toLowerCase().split(' ')
+  const textArray = props.text.toLowerCase().split(/[ \t\n]/)
 
   for (let i = 0; i < textArray.length; i++) {
     if (textArray[i].startsWith('*')) {
-      let text=textArray[i].replace(/[!@#$%^&?.,:{};())'"/]/g, "")
+      let text=textArray[i].replace(/[!@#$%^&?.«»,:{};()\]'"/]/g, "")
       wordsToTranslateArray.push(text.substring(1))
     }
   }
@@ -58,9 +58,9 @@ const TranslatedPage = (props) => {
     }
     
     const saveButton = (e) => {
-      
+      e.preventDefault()
       if (props.newVocabListName === ""){
-        e.preventDefault()
+        
         alert("Please input a name for your vocabulary list")
         return
         
@@ -99,11 +99,11 @@ const TranslatedPage = (props) => {
           <div>{wordListItems}</div>
         </div>
       </div>
-      <form className='save-list-form'>
+      <form className='save-list-form' onSubmit={saveButton}>
         <p className='save-list-title'>Save This Vocab List!</p>
         <input type="text" className='save-list-text-input'
           onChange={onChange} placeholder='save this vocab list as...' cols='7' rows='50'/>  
-      <button onClick={saveButton}>Save</button>
+      <input className='save-button' type="submit" value="Save"/>
       </form>
     </div>
 

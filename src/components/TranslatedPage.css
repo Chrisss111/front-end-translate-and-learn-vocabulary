@@ -45,6 +45,10 @@ input{
     font-weight: bold;
 }
 
+.save-button {
+    width: 100px;
+}
+
 .waiting-message {
     font-size: 25px;
     font-style: italic;

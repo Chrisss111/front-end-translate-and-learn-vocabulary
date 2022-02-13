@@ -29,7 +29,7 @@ const VocabListsListing = (props) => {
 
     return <div className='vocab-lists-listings-container'>
       
-      <h2 className='h2'>Select the Vocabulary List You Would Like to Review:</h2>
+      <h2 className='h2'>Select the vocabulary list you would like to review:</h2>
     <div>
       <div className='vocab-list-div'>{vocabListItems}</div>
     </div>
