@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+Translate and Build Vocabulary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the front-end repo for this project!
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+This is a translation web app. The target audience is intermediate to advanced language learners. With this app you can paste a text in a foreign language into the designated text box then indicate with an asterisk (*) which specific words in the text you want translated. Then when you press enter a vocabulary list of the words you indicated will appear, along with your original text. For each word in the vocabulary list you will have the foreign word and its English translation, a link to a more detailed translation (on Google Translate), an input box to put any notes you want to write about the word. 
 
-### `npm start`
+After your vocabulary list has been generated you will have the option to save it (along with the original text) for future reference/study
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+Front-end - React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Backend - Python, Flask, SQLAlchemy, PostgresSQL
 
-### `npm run build`
+External APIs - Google Translate API 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***In order to use this web app you will need to get a Google API key to use the Google Translate API ***
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.) Clone both the front-end and backend repositories
+2.) For the backend: create and acivate the virtual environment with $ python3 -m venv venv then
+$ source venv/bin/activate, in the virtual environment install project requirements with $ pip install -r requirements.txt, create a local database named _development, 
+create .env file and add this vAdd this environment variable: FLASK_ENV=development
 
-### `npm run eject`
+Also, add the environment variable SQLALCHEMY_DATABASE_URI to hold the path to your development database.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+for example it can state that SQLALCHEMY_DATABASE_URI=here put the path
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+download the json files associated with your Google Translate API key and make sure to put it in root project folder
+then run the backend server with $ FLASK_ENV=development flask run
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+For the front-end, install axios with $ yarn add axios, create .env file with the variable REACT_APP_BACKEND_URL equal to your local host, then start the front-end server with
+$ npm start or $ yarn start
 
-## Learn More
+Once the web app opens up, and assuming you have set up the backend along with the Google API key/json file, you should be able to follow the instructions on the home page and start using the app!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
