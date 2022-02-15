@@ -81,7 +81,7 @@ const TranslatedPage = (props) => {
         <a href={item.link}>Google Translate page for {item.selected_word}</a>
         <form>
           <label>
-            My Notes: <input onChange={createOnChange(i)} type="text" />
+            My notes: <input onChange={createOnChange(i)} type="text" />
           </label>
         </form>
       </div>

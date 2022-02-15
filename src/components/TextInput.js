@@ -7,7 +7,7 @@ const TextInput = (props) => {
 
   const [textInputVal, setTextInputVal] = useState("")
 
-  const placeholder = '\n1.) Copy and paste your text \n\n2.) Put an asterisk (*) in front of all the words you want translated \n\n3.) Select the language of the original text in the dropdown menu'
+  const placeholder = '\n1.) Copy and paste your text \n\n2.) Put an asterisk (*) in front of all the words you want translated \n\n3.) Select the language of the original text in the dropdown menu \n\n4.) Submit your text by clicking on the enter button'
 
   const enterButton = (e) => {
     e.preventDefault()
